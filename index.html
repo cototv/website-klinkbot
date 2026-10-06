@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-BOT - Advanced Tibia Bot with Remote Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TM3694ME4Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-TM3694ME4Y');
+    </script>
+
+</head>
+
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="ICON.gif" alt="R-BOT Icon">
+                <span class="logo-text">R-BOT</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#modes">Operation Modes</a></li>
+                    <li><a href="#waypoints">Waypoints</a></li>
+                    <li><a href="#scripting">Scripting</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Ultimate <span class="highlight">Tibia Bot</span> Experience</h1>
+                <p>Advanced automation with remote control capabilities for maximum efficiency and security</p>
+                <div class="hero-cta">
+                    <a href="#pricing" class="btn btn-primary">Get Started</a>
+                    <a href="#features" class="btn btn-secondary">Explore Features</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div class="glow"></div>
+                    <img src="main.png" alt="R-BOT Interface Screenshot" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Powerful tools to enhance your Tibia experience</p>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Remote Control</h3>
+                    <p>Control your bot from anywhere using your phone or any web browser</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3>Message Management</h3>
+                    <p>Reply to private messages directly from the web interface</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Auto-Safety</h3>
+                    <p>Automatically leave hunting grounds when players appear or supplies run low</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Web Waypoints Creator</h3>
+                    <p>Create hunting routes directly from your browser without in-game markers</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h3>Multiple Walking Methods</h3>
+                    <p>Choose between minimap clicks, keyboard navigation, or client window clicks</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Lua Scripting Engine</h3>
+                    <p>Customize your bot behavior with our powerful Lua API</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Auto-Updates</h3>
+                    <p>Always stay up-to-date with the latest features and security patches</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Integration</h3>
+                    <p>Advanced AI capabilities for premium users with smart auto-replies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operation Modes Section -->
+    <section id="modes" class="alt-bg">
+        <div class="container">
+            <h2 class="section-title">Dual Operation Modes</h2>
+            <p class="section-subtitle">Choose the setup that works best for you</p>
+
+            <div class="modes-container">
+                <div class="mode-card hardware-mode">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>External Hardware Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p>Maximum security solution that runs on separate hardware</p>
+                        <ul>
+                            <li>Undetectable by client checks</li>
+                            <li>Complete separation from game client</li>
+                            <li>Works even with client updates</li>
+                            <li>Virtually eliminates ban risk</li>
+                        </ul>
+                        <div class="mode-cta">
+                            <a href="#pricing" class="btn btn-secondary">Get Hardware Mode</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mode-card software-mode">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Software Executable Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p>Simple solution that runs directly on your PC</p>
+                        <ul>
+                            <li>Easy setup and configuration</li>
+                            <li>OBS integration for streaming</li>
+                            <li>Lightweight with minimal resource usage</li>
+                            <li>Full feature set at a lower cost</li>
+                        </ul>
+                        <div class="mode-cta">
+                            <a href="#pricing" class="btn btn-secondary">Get Software Mode</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waypoints Creator Section -->
+    <section id="waypoints">
+        <div class="container">
+            <h2 class="section-title">Web-Based Waypoints Creator</h2>
+            <p class="section-subtitle">The easiest way to create automated hunting routes</p>
+
+            <div class="waypoints-showcase">
+                <div class="waypoints-content">
+                    <div class="waypoints-features">
+                        <div class="wp-feature">
+                            <div class="wp-feature-icon">
+                                <i class="fas fa-mouse-pointer"></i>
+                            </div>
+                            <div class="wp-feature-text">
+                                <h4>Intuitive Web Interface</h4>
+                                <p>Create and edit waypoints from any device with a web browser</p>
+                            </div>
+                        </div>
+
+                        <div class="wp-feature">
+                            <div class="wp-feature-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div class="wp-feature-text">
+                                <h4>Share & Import</h4>
+                                <p>Share your routes with friends or import community-created paths</p>
+                            </div>
+                        </div>
+
+                        <div class="wp-feature">
+                            <div class="wp-feature-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="wp-feature-text">
+                                <h4>Custom Route Scripts</h4>
+                                <p>Create custom scripts for every route</p>
+                            </div>
+                        </div>
+
+                        <div class="wp-feature">
+                            <div class="wp-feature-icon">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <div class="wp-feature-text">
+                                <h4>Use runes on lure</h4>
+                                <p>Our system will use runes on the best spot, forget other bots that aim on a specific
+                                    creature and misses others, our system will calculate the best possible runes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="waypoints-image">
+                    <img src="waypointscreator.png" alt="Waypoints Creator Interface" />
+                    <div class="waypoints-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripting Section -->
+    <section id="scripting" class="alt-bg">
+        <div class="container">
+            <h2 class="section-title">Custom Lua Scripting</h2>
+            <p class="section-subtitle">Limitless customization with our powerful API</p>
+
+            <div class="scripting-showcase">
+                <div class="code-preview">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="code-title">custom_hunting.lua</span>
+                    </div>
+                    <pre><code class="language-lua">-- R-BOT Custom Hunting Script
+    mana_to_buy = 4500
+    hp_to_buy = 420
+    reset_exit_time("03:00:00")
+
+    function checkPositionAndUpdateWaypoint()
+        -- Get current character position
+        local position = get_char_pos()
+        local x, y = position[1], position[2]
+        
+        -- Get current waypoint mode
+        local currentMode = get_waypoint_mode()
+        
+        -- Define target position
+        local targetX, targetY = 1247, 937
+        
+        -- Define square radius
+        local radius = 2
+        
+        -- Check if within square radius of target position
+        if math.abs(x - targetX) <= radius and math.abs(y - targetY) <= radius then
+            -- Check if current waypoint mode is hunt (0)
+            if currentMode == 0 then
+                -- Change waypoint mode to refill (1)
+                set_waypoint_mode(1)
+                print("Waypoint mode changed from hunt to refill")
+            end
+        end
+    end
+
+
+
+    function main_handle()
+        local xbl, ybl = last_battlelist_position()
+        if xbl == 0 or ybl == 0 then
+            return true
+        end    
+            checkPositionAndUpdateWaypoint()
+        return false
+    end
+
+
+    function wpt_before()
+        return false
+    end
+        
+    function wpt_after()
+        return false
+    end
+
+    function handle_equip_change_before()
+
+        return false          
+    end</code></pre>
+                </div>
+
+                <div class="scripting-content">
+                    <div class="scripting-features">
+                        <div class="script-feature">
+                            <h4>Extensive API</h4>
+                            <p>Access player data, game environment, and bot controls through our comprehensive API</p>
+                        </div>
+
+                        <div class="script-feature">
+                            <h4>Community Scripts</h4>
+                            <p>Browse and download scripts created by the community or share your own</p>
+                        </div>
+
+                        <div class="script-feature">
+                            <h4>Real-time Debugging</h4>
+                            <p>Test and debug your scripts with our real-time console and logging tools</p>
+                        </div>
+
+                        <div class="script-feature">
+                            <h4>Script Marketplace</h4>
+                            <p>Access premium scripts designed for specific vocations and hunting grounds</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="scripting-cta">
+                        <a href="#" class="btn btn-primary">View Documentation</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">See R-BOT in action with these screenshots</p>
+
+            <!-- Updated Gallery Items with Descriptions -->
+            <div class="gallery-container">
+                <div class="gallery-item"
+                    data-description="The main interface of R-BOT showcasing the dashboard with real-time statistics, remote control options, and character status information.">
+                    <div class="gallery-image-container">
+                        <img src="main.png" alt="R-BOT Interface" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Main Interface</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="Customizable alert system that notifies you when specific events occur in-game, such as player detection or low supplies.">
+                    <div class="gallery-image-container">
+                        <img src="alerts.png" alt="Custom Alerts" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Custom Alerts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="Receive important notifications directly to your Telegram account, allowing you to monitor your character's status from anywhere.">
+                    <div class="gallery-image-container">
+                        <img src="telegram.png" alt="Telegram Alerts" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Telegram Alerts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="You can use our functions or create your own and schedule them to only call once a waypoint is reached, wants to refill from depot? from the npc? We got you covered.">
+                    <div class="gallery-image-container">
+                        <img src="waypoint_editor.png" alt="Custom Waypoint Editor" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Custom Waypoint Editor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="Browse and manage your custom scripts, including community-shared scripts for popular hunting locations.">
+                    <div class="gallery-image-container">
+                        <img src="scripts.png" alt="Scripts Management" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Scripts Management</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="Comprehensive documentation for our Lua API, with examples and tutorials to help you create custom scripts.">
+                    <div class="gallery-image-container">
+                        <img src="documentation.png" alt="Documentation" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Documentation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <div class="lightbox-content">
+                <h3 id="lightbox-title" class="lightbox-title">Image Title</h3>
+                <div class="lightbox-image-container">
+                    <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <img id="lightbox-image" src="" alt="Enlarged image">
+                    <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div id="lightbox-caption" class="lightbox-caption">Image Caption</div>
+                <p id="lightbox-description" class="lightbox-description">Detailed description of the image goes here.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing Plans</h2>
+            <p class="section-subtitle">Choose the plan that fits your needs</p>
+
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Software Mode</h3>
+                        <h4>Use OBS to capture Tibia Client and simulate the mouse/keyboard events on the same computer
+                        </h4>
+                        <h5>Low risk but not non existent</h5>
+                        <div class="price">
+                            <!-- <span class="price-value">1000</span>
+                            <span class="price-currency">Tibia Coins</span>
+                            <span class="price-period">per month</span> -->
+                        </div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Full Bot Functionality</li>
+                            <li><i class="fas fa-check"></i> Remote Control</li>
+                            <li><i class="fas fa-check"></i> Message Management</li>
+                            <li><i class="fas fa-check"></i> Web Waypoints Creator</li>
+                            <li><i class="fas fa-check"></i> Basic Lua Scripting</li>
+                            <li><i class="fas fa-check"></i> OBS Integration</li>
+                            <li><i class="fas fa-times"></i> Hardware Security</li>
+                            <li><i class="fas fa-times"></i> AI Message Responses</li>
+                        </ul>
+                    </div>
+                    <!-- <div class="price-cta">
+                        <a href="#" class="btn btn-primary">Choose Plan</a>
+                    </div> -->
+                </div>
+
+                <div class="price-card featured">
+                    <div class="price-badge">Popular</div>
+                    <div class="price-header">
+                        <h3>Hardware Mode</h3>
+                        <h4>Virtually Indetectable</h4>
+                        <h5>You don't need to install ANYTHING on the computer that will run tibia</h5>
+                        <h5>Only way to get banned is by player reports or by staying online for too long (10h+ on the
+                            same computer)</h5>
+                        <div class="price">
+                            <!-- <span class="price-value">1500</span>
+                            <span class="price-currency">Tibia Coins</span>
+                            <span class="price-period">per month</span> -->
+                        </div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> External Hardware Security</li>
+                            <li><i class="fas fa-check"></i> Full Bot Functionality</li>
+                            <li><i class="fas fa-check"></i> Remote Control</li>
+                            <li><i class="fas fa-check"></i> Message Management</li>
+                            <li><i class="fas fa-check"></i> Web Waypoints Creator</li>
+                            <li><i class="fas fa-check"></i> Advanced Lua Scripting</li>
+                            <li><i class="fas fa-check"></i> Hardware Integration (More Safe!)</li>
+                            <li><i class="fas fa-times"></i> AI Message Responses</li>
+                        </ul>
+                    </div>
+                    <!-- <div class="price-cta">
+                        <a href="#" class="btn btn-primary">Choose Plan</a>
+                    </div> -->
+                </div>
+
+                <div class="price-card premium">
+                    <div class="price-badge">Ultimate</div>
+                    <div class="price-header">
+                        <h3>Hardware + AI</h3>
+                        <h4>It uses hardware mode</h4>
+                        <div class="price">
+                            <!-- <span class="price-value">1750</span>
+                            <span class="price-currency">Tibia Coins</span>
+                            <span class="price-period">per month</span> -->
+                        </div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> External Hardware Security</li>
+                            <li><i class="fas fa-check"></i> Full Bot Functionality</li>
+                            <li><i class="fas fa-check"></i> Remote Control</li>
+                            <li><i class="fas fa-check"></i> Message Management</li>
+                            <li><i class="fas fa-check"></i> Web Waypoints Creator</li>
+                            <li><i class="fas fa-check"></i> Advanced Lua Scripting</li>
+                            <li><i class="fas fa-check"></i> Hardware Integration (More Safe!)</li>
+                            <li><i class="fas fa-check"></i> AI Message Auto-Responses</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                        </ul>
+                    </div>
+                    <div class="price-cta">
+                        <a href="#" class="btn btn-primary">Not Available Yet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Get in touch with our team via WhatsApp</p>
+
+            <div class="contact-container">
+                <div class="contact-cards">
+                    <!-- Contact Person 1 -->
+                    <div class="contact-card" data-aos="fade-up">
+                        <div class="contact-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Andre</h3>
+                            <p class="contact-role">Sales/Support</p>
+                            <p class="contact-description">Sales/Support</p>
+                        </div>
+                        <div class="contact-whatsapp">
+                            <a href="https://wa.me/558695316192?text=Hello" target="_blank" class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+55 86 9531-6192</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="contact-avatar">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Wagner</h3>
+                            <p class="contact-role">Sales/Support</p>
+                            <p class="contact-description">Sales/Support</p>
+                        </div>
+                        <div class="contact-whatsapp">
+                            <a href="https://wa.me/554796582824?text=Hello" target="_blank" class="whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>+55 47 9658-2824</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Contact Info -->
+                <div class="contact-warning">
+                    <div class="warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <!-- <h4>Important Notice</h4>
+                    <p>Please do not message both contacts. Only the person who sells you the license will provide
+                        support.</p> -->
+                        <h4>Contact Guidelines</h4>
+<p>Contact ONE person only. Your license seller will be your support provider - do not message both contacts.</p>
+                </div>
+
+                
+                <div class="contact-additional">
+                    <div class="contact-hours">
+                        <div class="hours-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="hours-info">
+                            <h4>Support Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM (GMT-3)</p>
+                            <p>Weekend: 10:00 AM - 4:00 PM (GMT-3)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-response">
+                        <div class="response-icon">
+                            <i class="fas fa-reply"></i>
+                        </div>
+                        <div class="response-info">
+                            <h4>Response Time</h4>
+                            <p>WhatsApp: Usually within 1 hour</p>
+                            <p>Technical Issues: Within 4 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">R-BOT</span>
+                    <p>Advanced Tibia Bot with Remote Control</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#modes">Operation Modes</a></li>
+                            <li><a href="#waypoints">Waypoints</a></li>
+                            <li><a href="#scripting">Scripting</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API Reference</a></li>
+                            <li><a href="#">Script Library</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- <div class="footer-links-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Refund Policy</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 R-BOT. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
