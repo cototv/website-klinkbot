@@ -56,6 +56,9 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+
+
+
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -215,38 +218,48 @@ function highlightCode() {
 // Call syntax highlighting on page load
 window.addEventListener('load', highlightCode);
 
-// Pricing Card Hover Effects
+// ==========================================
+// PRICING CARD HOVER EFFECTS
+// ==========================================
+
 const priceCards = document.querySelectorAll('.price-card');
 
-priceCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        priceCards.forEach(c => {
-            if (c !== card) {
-                c.style.transform = 'scale(0.98)';
-                c.style.opacity = '0.7';
-            }
-        });
-        
-        if (!card.classList.contains('featured')) {
-            card.style.transform = 'scale(1.05)';
-            card.style.zIndex = '1';
-        } else {
-            card.style.transform = 'scale(1.08)';
-        }
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        priceCards.forEach(c => {
-            if (c.classList.contains('featured')) {
-                c.style.transform = 'scale(1.05)';
+// Only enable hover effects on desktop.
+// On mobile, cards remain at their normal size
+// to prevent overflow and layout issues.
+if (window.matchMedia('(min-width: 769px)').matches) {
+
+    priceCards.forEach(card => {
+
+        card.addEventListener('mouseenter', () => {
+
+            priceCards.forEach(c => {
+                if (c !== card) {
+                    c.style.transform = 'scale(0.98)';
+                    c.style.opacity = '0.7';
+                }
+            });
+
+            if (card.classList.contains('featured')) {
+                card.style.transform = 'scale(1.05)';
             } else {
-                c.style.transform = 'scale(1)';
+                card.style.transform = 'scale(1.03)';
+                card.style.zIndex = '2';
             }
-            c.style.opacity = '1';
-            c.style.zIndex = 'auto';
         });
+
+        card.addEventListener('mouseleave', () => {
+
+            priceCards.forEach(c => {
+                c.style.transform = 'scale(1)';
+                c.style.opacity = '1';
+                c.style.zIndex = 'auto';
+            });
+        });
+
     });
-});
+
+}
 
 
 // Gallery and Lightbox functionality
@@ -353,16 +366,15 @@ function openLightboxByIndex(index) {
     lightboxCaption.textContent = imageData.caption || '';
     lightboxDescription.textContent = imageData.description || '';
     
-    // Show lightbox
+    // Show lightbox (gallery mode with navigation)
     lightbox.classList.add('active');
+    lightbox.classList.remove('standalone-mode');
     
     // Prevent body scrolling when lightbox is open
     document.body.style.overflow = 'hidden';
     
     // Add ESC key event to close lightbox
     document.addEventListener('keydown', handleKeyPress);
-    
-    console.log('Opened lightbox with image index:', index);
 }
 
 // Open the lightbox with the selected image
@@ -387,16 +399,14 @@ function openLightbox(imageSrc, imageTitle, description) {
         lightboxCaption.textContent = '';
         lightboxDescription.textContent = description || '';
         
-        // Show lightbox
-        lightbox.classList.add('active');
+        // Show lightbox in standalone (no gallery nav)
+        lightbox.classList.add('active', 'standalone-mode');
         
         // Prevent body scrolling when lightbox is open
         document.body.style.overflow = 'hidden';
         
         // Add ESC key event to close lightbox
         document.addEventListener('keydown', handleKeyPress);
-        
-        console.warn('Image not found in gallery, opened in standalone mode');
     }
 }
 
@@ -406,7 +416,7 @@ function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     
     // Hide lightbox
-    lightbox.classList.remove('active');
+    lightbox.classList.remove('active', 'standalone-mode');
     
     // Re-enable body scrolling
     document.body.style.overflow = 'auto';
@@ -472,20 +482,36 @@ function changeImage(direction) {
     }, 200);
 }
 
+
 // Handle keyboard navigation
 function handleKeyPress(event) {
+    const lightbox = document.getElementById('lightbox');
+    const isStandalone = lightbox && lightbox.classList.contains('standalone-mode');
+
     if (event.key === 'Escape') {
         closeLightbox();
-    } else if (event.key === 'ArrowLeft') {
+    } else if (!isStandalone && event.key === 'ArrowLeft') {
         changeImage(-1);
-    } else if (event.key === 'ArrowRight') {
+    } else if (!isStandalone && event.key === 'ArrowRight') {
         changeImage(1);
     }
+}
+
+function initZoomableImages() {
+    document.querySelectorAll('.zoomable-image').forEach((img) => {
+        img.addEventListener('click', function () {
+            const feature = this.closest('.automation-feature');
+            const title = feature ? (feature.querySelector('h3')?.textContent || this.alt) : this.alt;
+            const description = feature ? (feature.querySelector('p')?.textContent.trim() || '') : '';
+            openLightbox(this.src, title, description);
+        });
+    });
 }
 
 // Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initGallery();
+    initZoomableImages();
     
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {
@@ -497,3 +523,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+

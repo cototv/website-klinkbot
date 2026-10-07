@@ -3,3 +3,14 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Arquivos locais grandes / não usados no site
+unknown_replay_*.gif
+*.mp4
+*.mov
+Battle com Mega.PNG
+Mapa de Calor na Tela.PNG
+Mapa.png
+Nodes.png
+Radar de Monstros.PNG
+script.PNG
