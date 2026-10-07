@@ -301,7 +301,7 @@ function initGallery() {
             alt: img.getAttribute('alt') || '',
             caption: captionEl ? captionEl.textContent : '',
             title: img.getAttribute('alt') || (captionEl ? captionEl.textContent : ''),
-            description: item.getAttribute('data-description') || 'This is an image from the R-BOT interface showcase.',
+            description: item.getAttribute('data-description') || 'KlinkBOT - Serviços de automação para PokeXgames',
             element: item
         });
     });
@@ -508,10 +508,278 @@ function initZoomableImages() {
     });
 }
 
+function initFeatureImagePreviews() {
+    document.querySelectorAll('.feature-card-preview[data-preview-image]').forEach((card) => {
+        card.addEventListener('click', () => {
+            const imageName = card.getAttribute('data-preview-image');
+            const title = card.getAttribute('data-preview-title') || card.querySelector('h3')?.textContent?.trim() || 'Preview';
+            const description = Array.from(card.querySelectorAll('p'))
+                .map((p) => p.textContent.trim())
+                .filter(Boolean)
+                .join(' ');
+
+            if (!imageName) return;
+
+            const imageSrc = new URL(imageName, window.location.href).href;
+            openLightbox(imageSrc, title, description);
+
+            trackEvent('feature_image_open', {
+                event_category: 'features',
+                event_label: title
+            });
+        });
+    });
+}
+
+// ==========================================
+// GOOGLE ANALYTICS 4 - CLICK TRACKING
+// ==========================================
+
+function trackEvent(eventName, params = {}) {
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, params);
+    }
+}
+
+function initAnalyticsTracking() {
+    // Contratar / WhatsApp (em breve)
+    document.querySelectorAll('[data-track="contratar"]').forEach((el) => {
+        el.addEventListener('click', () => {
+            trackEvent('open_hire_form', {
+                event_category: 'contact',
+                event_label: 'contratar'
+            });
+        });
+    });
+
+    document.querySelectorAll('[data-track="whatsapp"]').forEach((el) => {
+        el.addEventListener('click', () => {
+            trackEvent('contact_whatsapp', {
+                event_category: 'contact',
+                event_label: 'whatsapp_em_breve'
+            });
+        });
+    });
+
+    document.querySelectorAll('[data-track="enviar_contratacao"]').forEach((el) => {
+        el.addEventListener('click', () => {
+            const plan = document.getElementById('hirePlan')?.value || '';
+            trackEvent('submit_hire_form', {
+                event_category: 'contact',
+                event_label: plan || 'enviar_contratacao',
+                plan_name: plan
+            });
+        });
+    });
+
+    // Discord (non-link, still track interest)
+    document.querySelectorAll('[data-track="discord"]').forEach((el) => {
+        el.addEventListener('click', () => {
+            trackEvent('contact_discord', {
+                event_category: 'contact',
+                event_label: 'discord_members_only'
+            });
+        });
+    });
+
+    // Hero / CTA buttons
+    document.querySelectorAll('.btn, .hero-cta a').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            trackEvent('cta_click', {
+                event_category: 'cta',
+                event_label: btn.textContent?.trim() || btn.getAttribute('href') || 'button',
+                link_url: btn.getAttribute('href') || ''
+            });
+        });
+    });
+
+    // Gallery image opens (thumbnail click)
+    document.querySelectorAll('.gallery-item').forEach((item) => {
+        item.addEventListener('click', () => {
+            const caption = item.querySelector('.gallery-caption')?.textContent?.trim() || 'gallery_item';
+            trackEvent('gallery_open', {
+                event_category: 'gallery',
+                event_label: caption
+            });
+        });
+    });
+}
+
+function initHireModal() {
+    const modal = document.getElementById('hireModal');
+    const openBtn = document.getElementById('openHireModal');
+    const form = document.getElementById('hireForm');
+    const phoneInput = document.getElementById('hirePhone');
+    const planSelect = document.getElementById('hirePlan');
+
+    if (!modal || !openBtn) return;
+
+    const openModal = (preselectedPlan = '') => {
+        if (planSelect) {
+            if (preselectedPlan) {
+                planSelect.value = preselectedPlan;
+                // If value didn't match any option, leave default
+                if (planSelect.value !== preselectedPlan) {
+                    planSelect.selectedIndex = 0;
+                }
+            }
+        }
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('hireName')?.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    openBtn.addEventListener('click', () => openModal());
+
+    // Clicking a price card opens the hire form with that plan selected
+    document.querySelectorAll('.price-card[data-plan]').forEach((card) => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            const planId = card.getAttribute('data-plan') || 'unknown';
+            const planOption = card.getAttribute('data-plan-option') || '';
+            const title = card.querySelector('h3')?.textContent?.trim() || planId;
+
+            trackEvent('select_plan', {
+                plan_id: planId,
+                plan_name: title,
+                event_category: 'pricing',
+                event_label: planId
+            });
+
+            openModal(planOption);
+        });
+    });
+
+    modal.querySelectorAll('[data-close-hire]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Simple BR phone mask: (XX) XXXXX-XXXX
+    if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+            let digits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+            if (digits.length > 6) {
+                phoneInput.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+            } else if (digits.length > 2) {
+                phoneInput.value = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+            } else if (digits.length > 0) {
+                phoneInput.value = `(${digits}`;
+            } else {
+                phoneInput.value = '';
+            }
+        });
+    }
+
+    const showHireToast = (message, isError = false) => {
+        const note = document.createElement('div');
+        note.className = 'hire-success-toast' + (isError ? ' hire-error-toast' : '');
+        note.textContent = message;
+        document.body.appendChild(note);
+        setTimeout(() => note.classList.add('show'), 50);
+        setTimeout(() => {
+            note.classList.remove('show');
+            setTimeout(() => note.remove(), 300);
+        }, 5000);
+    };
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('hireName')?.value.trim() || '';
+            const phone = document.getElementById('hirePhone')?.value.trim() || '';
+            const plan = document.getElementById('hirePlan')?.value || '';
+            const errorEl = document.getElementById('hireFormError');
+            const submitBtn = form.querySelector('.hire-submit-btn');
+
+            if (errorEl) {
+                errorEl.hidden = true;
+                errorEl.textContent = '';
+            }
+
+            if (!name || !phone || !plan) {
+                if (errorEl) {
+                    errorEl.hidden = false;
+                    errorEl.textContent = 'Preencha nome, telefone e plano.';
+                }
+                return;
+            }
+
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+                if (errorEl) {
+                    errorEl.hidden = false;
+                    errorEl.textContent = 'Informe um telefone válido com DDD.';
+                }
+                return;
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando...';
+            }
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/supportklinkbot@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: name,
+                        telefone: phone,
+                        plano: plan,
+                        _subject: 'Novo pedido de contratação - KlinkBOT',
+                        _template: 'table',
+                        _captcha: 'false'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Falha no envio');
+                }
+
+                form.reset();
+                closeModal();
+                showHireToast('Pedido enviado! A equipe KlinkBOT entrará em contato em breve.');
+            } catch (err) {
+                if (errorEl) {
+                    errorEl.hidden = false;
+                    errorEl.textContent = 'Não foi possível enviar. Tente novamente em instantes.';
+                }
+                showHireToast('Erro ao enviar o pedido. Tente novamente.', true);
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar pedido';
+                }
+            }
+        });
+    }
+}
+
 // Initialize gallery when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initGallery();
     initZoomableImages();
+    initFeatureImagePreviews();
+    initAnalyticsTracking();
+    initHireModal();
     
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {

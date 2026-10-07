@@ -13,15 +13,18 @@
         href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
         rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TM3694ME4Y"></script>
+    <!-- Google tag (gtag.js) - GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SY0XLXBM6P"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
-        gtag('config', 'G-TM3694ME4Y');
+        gtag('config', 'G-SY0XLXBM6P', {
+            send_page_view: true
+        });
     </script>
+    <!-- Google Search Console: cole abaixo a meta tag de verificação do painel (Configurações > Verificação de propriedade) -->
+    <!-- <meta name="google-site-verification" content="COLE_O_CODIGO_AQUI" /> -->
 
 </head>
 
@@ -59,9 +62,11 @@
                     <span>do mercado</span>
                 </h1>
                 <p>A ferramenta definitiva de automação para PokexGames</p>
-                <p>Projete Shinys e Megas, aumente suas Capturas, complete todos os Pokelogs, upe Level e ganhe dinheiro</p>
-                <p>Avançado sistema de Waypoints Inteligente, Skills, Cura e operação indetectável — feito para treinadores de elite</p>
-                <div class="hero-cta">
+                <p>Projete Shinys e Megas, aumente suas capturas, complete todos os Pokelogs, upe de nível e ganhe dinheiro.</p>
+                <p>Avançado sistema de Waypoints com mapa de calor, sistema de captura configuravel com diversas Pokébolas, Smart Skills — identificando quando os monstros foram mortos e interrompendo o combo — e diversos métodos de cura.</p>
+                <p>Operação indetectável — feita para treinadores de elite.</p>
+
+                <div class="hero-cta">  
                     <a href="#pricing" class="btn btn-primary">Começar Agora</a>
                     <a href="#features" class="btn btn-secondary">Explorar Recursos</a>
                 </div>
@@ -82,22 +87,26 @@
             <p class="section-subtitle">Ferramentas poderosas para melhorar sua experiência na PokeXGames</p>
             <div class="features-grid">
 
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card feature-card-preview" data-aos="fade-up" data-aos-delay="300"
+                    data-preview-image="Mapa de Calor na Tela.png" data-preview-title="Mapa de Calor">
                     <div class="feature-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h3>Mapa de Calor</h3>
                     <p>Crie rotas de caça facilmente direto no mapa de calor e visualizando o percurso em tempo real</p>
                     <p>Garanta que seu personagem percorra o caminho mais seguro e eficiente</p>
+                    <span class="feature-open-image">Abrir Imagem</span>
                 </div>
 
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-card feature-card-preview" data-aos="fade-up" data-aos-delay="500"
+                    data-preview-image="script.png" data-preview-title="Scripts">
                     <div class="feature-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Scripts</h3>
                     <p>Crie, Edite e Carregue seus scripts de forma rápida e fácil.</p>
                     <p>Compartilhe seus scripts favoritos com os amigos.</p>
+                    <span class="feature-open-image">Abrir Imagem</span>
                 </div>
 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
@@ -118,13 +127,26 @@
                     <p>Função disponivel para celular e desktop.</p>
                 </div>
 
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card feature-card-preview" data-aos="fade-up" data-aos-delay="100"
+                    data-preview-image="1b6762e6-9ace-44e5-8ddc-c38f83f87ef2.jpg" data-preview-title="Screen Share">
                     <div class="feature-icon">
-                        <i class="fas fa-comment-dots"></i>
+                        <i class="fas fa-rss-square"></i>
                     </div>
-                    <h3>Compartilhamento de Tela</h3>
-                    <p>Veja seu personagem em tempo real, pause quando necessario ou responda mensagens diretamente pelo seu celular</p>
+                    <h3>Screen Share</h3>
+                    <p>Veja seu personagem em tempo real, pause quando necessario ou responda mensagens diretamente pelo seu celular ou pagina de internet</p>
                     <p>Veja até dois personagens ao mesmo tempo</p>
+                    <span class="feature-open-image">Abrir Imagem</span>
+                </div>
+
+                <div class="feature-card feature-card-preview" data-aos="fade-up" data-aos-delay="100"
+                    data-preview-image="Pokeballs.png" data-preview-title="Sistema de Captura">
+                    <div class="feature-icon">
+                        <i class="fab fa-monero"></i>
+                    </div>
+                    <h3>Sistema de Captura</h3>
+                    <p>Aumente seus caughts com o sistema de captura inteligente</p>
+                    <p>Configure quantos pokemons desejar e qual tipo de pokebola sera utilizada</p>
+                    <span class="feature-open-image">Abrir Imagem</span>
                 </div>
 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
@@ -132,15 +154,16 @@
                         <i class="fas fa-sync-alt"></i>
                     </div>
                     <h3>Atualizações Automáticas</h3>
-                    <p>Sempre atualizado com os recursos e correções de segurança mais recentes</p>
+                    <p>Sempre atualizado com os recursos e correções de segurança mais recentes para promover uma melhor experiência</p>
                 </div>
 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
                     <div class="feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <h3>Avançado Sistema de captura</h3>
-                    <p>Selecione qual pokebola sera utilizada em cada pokemon sendo shiny ou não</p>
+                    <h3>Sistema de Hunt</h3>
+                    <p>Selecione entre os dois sistemas de hunt - Auto Target ou Auto Combo</p>
+                    <p>Permitindo matar igual a um player monstros single target ou fazer lures com varios monstros ao mesmo tempo</p>
                 </div>
             </div>
         </div>
@@ -317,7 +340,7 @@
                     </div>
                 </div>
 
-                <div class="gallery-item gallery-item-large"
+                <div class="gallery-item"
                     data-description="Ferramenta que permite revelar Kecleons que estão na tela">
                     <div class="gallery-image-container">
                         <img src="kecleon-reveal-v3.gif" alt="Revelar Kecleons com o radar" />
@@ -336,6 +359,37 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="gallery-item"
+                    data-description="Screen Share - permite configurar até 2 personagens ao mesmo tempo para acompanhar no celular com alarme sonoro, pause e sistema de mensagem">
+                    <div class="gallery-image-container">
+                        <img src="1b6762e6-9ace-44e5-8ddc-c38f83f87ef2.jpg" alt="Screen Share" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Screen share para o celular ou pagina de internet</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="Adição de nodes ao mapa de calor diretamente no jogo">
+                    <div class="gallery-image-container">
+                        <img src="7312ed68-4e16-4489-9684-1446cc38c2a8.jpg" alt="Adição de nodes" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Adicione nodes ao mapa de calor diretamente no jogo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item"
+                    data-description="Duplo shiny em lure de Dratini/Dragonair">
+                    <div class="gallery-image-container">
+                        <img src="66f199e0-39cc-46ac-a0ae-e4fac12252d6.jpg" alt="Usuario projetando Shiny" />
+                        <div class="gallery-overlay">
+                            <div class="gallery-caption">Faça pokelogs ou capture Shiny com eficiência</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -368,7 +422,23 @@
             <p class="section-subtitle">Escolha o plano que atende às suas necessidades</p>
 
             <div class="pricing-cards">
-                <div class="price-card featured">
+
+                <div class="price-card limited" data-plan="teste_rapido_7_dias" data-plan-option="Teste Rápido - 7 dias (R$63,00)">
+                    <span class="price-badge badge-limited">Por Tempo Limitado</span>
+                    <div class="price-header">
+                        <h3>⚡ Teste Rápido</h3>
+                        <h3> 7 dias de acesso</h3>
+                        <h4>Ideal para quem quer experimentar o serviço e conhecer todos os recursos sem compromisso.
+                        </h4>
+    
+                        <div class="price">
+                            <span class="price-value">R$63.00</span>
+                            <span class="price-period">R$9.00 por dia</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-card featured" data-plan="plano_mensal_30_dias" data-plan-option="Plano Mensal - 30 dias (R$240,00)">
                     <span class="price-badge">Popular</span>
                     <div class="price-header">
                         <h3>⭐ Plano Mensal</h3>
@@ -383,7 +453,7 @@
                     </div>
                 </div>
 
-                <div class="price-card">
+                <div class="price-card" data-plan="plano_pro_90_dias" data-plan-option="Plano Pro - 90 dias (R$700,00)">
                     <span class="price-badge badge-mais-comprado">Mais Comprado</span>
                     <div class="price-header">
                         <h3>🔥 Plano Pro</h3>
@@ -397,34 +467,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="price-card">
-                    <div class="price-header">
-                        <h3>👑 Plano Premium</h3>
-                        <h3> 180 dias de acesso</h3>
-                        <h4>A melhor opção para quem quer compromisso de longo prazo e o melhor custo-benefício.
-                        </h4>
 
-                        <div class="price">
-                            <span class="price-value">R$1260.00</span>
-                            <span class="price-period">R$7.00 por dia</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="price-card limited">
-                    <span class="price-badge badge-limited">Por Tempo Limitado</span>
-                    <div class="price-header">
-                        <h3>⚡ Teste Rápido</h3>
-                        <h3> 7 dias de acesso</h3>
-                        <h4>Ideal para quem quer experimentar o serviço e conhecer todos os recursos sem compromisso.
-                        </h4>
-
-                        <div class="price">
-                            <span class="price-value">R$63.00</span>
-                            <span class="price-period">R$9.00 por dia</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="price-card">
+                <div class="price-card" data-plan="experiencia_plus_15_dias" data-plan-option="Experiência Plus - 15 dias (R$127,50)">
                     <div class="price-header">
                         <h3>🚀 Experiência Plus</h3>
                         <h3> 15 dias de acesso</h3>
@@ -437,6 +481,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="price-card" data-plan="plano_premium_180_dias" data-plan-option="Plano Premium - 180 dias (R$1260,00)">
+                    <div class="price-header">
+                        <h3>👑 Plano Premium</h3>
+                        <h3> 180 dias de acesso</h3>
+                        <h4>A melhor opção para quem quer compromisso de longo prazo e o melhor custo-benefício.
+                        </h4>
+
+                        <div class="price">
+                            <span class="price-value">R$1260.00</span>
+                            <span class="price-period">R$7.00 por dia</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -445,7 +504,7 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Fale Conosco</h2>
-            <p class="section-subtitle">Entre em contato com nossa equipe pelo WhatsApp</p>
+            <p class="section-subtitle">Forneça os dados e a equipe KlinkBOT entrará em contato o mais breve possível</p>
 
             <div class="contact-container">
                 <div class="contact-cards">
@@ -458,11 +517,15 @@
                             <p class="contact-role">Vendas/Suporte</p>
                         </div>
                         <div class="contact-actions">
-                            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+                            <button type="button" class="hire-btn" id="openHireModal" data-track="contratar">
+                                <i class="fas fa-file-signature"></i>
+                                <span>Contratar</span>
+                            </button>
+                            <span class="whatsapp-btn whatsapp-soon" aria-disabled="true" data-track="whatsapp">
                                 <i class="fab fa-whatsapp"></i>
-                                <span>Assine Agora</span>
-                            </a>
-                            <span class="discord-btn" aria-disabled="true">
+                                <span>Em breve</span>
+                            </span>
+                            <span class="discord-btn" aria-disabled="true" data-track="discord">
                                 <i class="fab fa-discord"></i>
                                 <span>Apenas para Membros</span>
                             </span>
@@ -488,7 +551,7 @@
                         </div>
                         <div class="response-info">
                             <h4>Tempo de Resposta</h4>
-                            <p>WhatsApp: Geralmente em até 1 hora</p>
+                            <p>Pedido de contratação: Geralmente em até 4 horas</p>
                             <p>Problemas técnicos: Em até 4 horas</p>
                         </div>
                     </div>
@@ -496,6 +559,40 @@
             </div>
         </div>
     </section>
+
+    <!-- Hire Modal -->
+    <div id="hireModal" class="hire-modal" aria-hidden="true">
+        <div class="hire-modal-backdrop" data-close-hire></div>
+        <div class="hire-modal-dialog" role="dialog" aria-labelledby="hireModalTitle" aria-modal="true">
+            <button type="button" class="hire-modal-close" data-close-hire aria-label="Fechar">&times;</button>
+            <h3 id="hireModalTitle">Contratar KlinkBOT</h3>
+            <p class="hire-modal-intro">Forneça os dados e a equipe KlinkBOT entrará em contato o mais breve possível.</p>
+
+            <form id="hireForm">
+                <label for="hireName">Nome</label>
+                <input type="text" id="hireName" name="nome" required placeholder="Seu nome" autocomplete="name">
+
+                <label for="hirePhone">Telefone com DDD</label>
+                <input type="tel" id="hirePhone" name="telefone" required placeholder="(11) 99999-9999" autocomplete="tel" inputmode="tel">
+
+                <label for="hirePlan">Plano desejado</label>
+                <select id="hirePlan" name="plano" required>
+                    <option value="" disabled selected>Selecione um plano</option>
+                    <option value="Teste Rápido - 7 dias (R$63,00)">Teste Rápido - 7 dias (R$63,00)</option>
+                    <option value="Experiência Plus - 15 dias (R$127,50)">Experiência Plus - 15 dias (R$127,50)</option>
+                    <option value="Plano Mensal - 30 dias (R$240,00)">Plano Mensal - 30 dias (R$240,00)</option>
+                    <option value="Plano Pro - 90 dias (R$700,00)">Plano Pro - 90 dias (R$700,00)</option>
+                    <option value="Plano Premium - 180 dias (R$1260,00)">Plano Premium - 180 dias (R$1260,00)</option>
+                </select>
+
+                <button type="submit" class="hire-submit-btn" data-track="enviar_contratacao">
+                    Enviar pedido
+                </button>
+                <p class="hire-form-note">Você receberá um retorno no WhatsApp/telefone informado.</p>
+                <p id="hireFormError" class="hire-form-error" hidden></p>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
