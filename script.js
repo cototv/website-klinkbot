@@ -611,8 +611,26 @@ function initHireModal() {
     const form = document.getElementById('hireForm');
     const phoneInput = document.getElementById('hirePhone');
     const planSelect = document.getElementById('hirePlan');
+    // Cloudflare Turnstile site key (public). Never put the secret key in frontend code.
+    const TURNSTILE_SITE_KEY = '0x4AAAAAAFQb8wHnT_gKddXW';
+    let turnstileWidgetId = null;
 
     if (!modal || !openBtn) return;
+
+    const ensureTurnstile = () => {
+        const mount = document.getElementById('cf-turnstile');
+        if (!mount || typeof turnstile === 'undefined') return;
+
+        if (turnstileWidgetId === null) {
+            turnstileWidgetId = turnstile.render(mount, {
+                sitekey: TURNSTILE_SITE_KEY,
+                theme: 'dark',
+                language: 'pt-br'
+            });
+        } else {
+            turnstile.reset(turnstileWidgetId);
+        }
+    };
 
     const openModal = (preselectedPlan = '') => {
         if (planSelect) {
@@ -628,6 +646,8 @@ function initHireModal() {
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        // Render/reset captcha when modal is visible
+        setTimeout(ensureTurnstile, 50);
         document.getElementById('hireName')?.focus();
     };
 
@@ -635,6 +655,9 @@ function initHireModal() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        if (turnstileWidgetId !== null && typeof turnstile !== 'undefined') {
+            turnstile.reset(turnstileWidgetId);
+        }
     };
 
     openBtn.addEventListener('click', () => openModal());
@@ -728,12 +751,35 @@ function initHireModal() {
                 return;
             }
 
+            const turnstileToken = (typeof turnstile !== 'undefined' && turnstileWidgetId !== null)
+                ? turnstile.getResponse(turnstileWidgetId)
+                : '';
+
+            if (!turnstileToken) {
+                if (errorEl) {
+                    errorEl.hidden = false;
+                    errorEl.textContent = 'Confirme o captcha antes de enviar.';
+                }
+                return;
+            }
+
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Enviando...';
             }
 
             try {
+                let visitorIp = 'indisponivel';
+                try {
+                    const ipRes = await fetch('https://api.ipify.org?format=json', { cache: 'no-store' });
+                    if (ipRes.ok) {
+                        const ipData = await ipRes.json();
+                        visitorIp = ipData.ip || visitorIp;
+                    }
+                } catch (_) {
+                    // Keep fallback if IP lookup fails
+                }
+
                 const response = await fetch('https://formsubmit.co/ajax/supportklinkbot@gmail.com', {
                     method: 'POST',
                     headers: {
@@ -744,7 +790,12 @@ function initHireModal() {
                         nome: name,
                         telefone: phone,
                         plano: plan,
-                        _subject: 'Novo pedido de contratação - KlinkBOT',
+                        ip: visitorIp,
+                        user_agent: navigator.userAgent || '',
+                        pagina: window.location.href,
+                        data_hora: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+                        turnstile_token: turnstileToken,
+                        _subject: `Novo pedido KlinkBOT - ${plan} - IP ${visitorIp}`,
                         _template: 'table',
                         _captcha: 'false'
                     })
@@ -755,12 +806,18 @@ function initHireModal() {
                 }
 
                 form.reset();
+                if (turnstileWidgetId !== null && typeof turnstile !== 'undefined') {
+                    turnstile.reset(turnstileWidgetId);
+                }
                 closeModal();
                 showHireToast('Pedido enviado! A equipe KlinkBOT entrará em contato em breve.');
             } catch (err) {
                 if (errorEl) {
                     errorEl.hidden = false;
                     errorEl.textContent = 'Não foi possível enviar. Tente novamente em instantes.';
+                }
+                if (turnstileWidgetId !== null && typeof turnstile !== 'undefined') {
+                    turnstile.reset(turnstileWidgetId);
                 }
                 showHireToast('Erro ao enviar o pedido. Tente novamente.', true);
             } finally {

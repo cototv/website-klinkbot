@@ -26,6 +26,9 @@
     <!-- Google Search Console: cole abaixo a meta tag de verificação do painel (Configurações > Verificação de propriedade) -->
     <!-- <meta name="google-site-verification" content="COLE_O_CODIGO_AQUI" /> -->
 
+    <!-- Cloudflare Turnstile (anti-spam) -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+
 </head>
 
 <body>
@@ -584,6 +587,10 @@
                     <option value="Plano Pro - 90 dias (R$700,00)">Plano Pro - 90 dias (R$700,00)</option>
                     <option value="Plano Premium - 180 dias (R$1260,00)">Plano Premium - 180 dias (R$1260,00)</option>
                 </select>
+
+                <div class="hire-turnstile-wrap">
+                    <div id="cf-turnstile"></div>
+                </div>
 
                 <button type="submit" class="hire-submit-btn" data-track="enviar_contratacao">
                     Enviar pedido
