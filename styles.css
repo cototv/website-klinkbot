@@ -1059,6 +1059,16 @@ footer {
     cursor: pointer;
 }
 
+.gallery-item-large {
+    grid-column: span 2;
+    height: 625px; /* 250px * 2.5 */
+}
+
+.gallery-item-large .gallery-image-container img {
+    object-fit: contain;
+    background-color: rgba(10, 11, 18, 0.85);
+}
+
 .gallery-item:hover {
     transform: translateY(-10px);
     border-color: var(--color-primary-light);
@@ -1375,6 +1385,11 @@ footer {
     .gallery-container {
         grid-template-columns: 1fr;
     }
+
+    .gallery-item-large {
+        grid-column: span 1;
+        height: 400px;
+    }
     
     .lightbox-nav {
         width: 40px;
@@ -1431,6 +1446,10 @@ footer {
     
     .gallery-container {
         grid-template-columns: 1fr;
+    }
+
+    .gallery-item-large {
+        height: min(70vw, 360px);
     }
     
     .lightbox {
